@@ -1,0 +1,128 @@
+/* body 代表整個網頁底層的設定 */
+body {
+    background-color: #f2ede4;           /* 設定網頁底色為奶茶色 */
+    display: flex;                       /* 啟用彈性佈局，內容置中 */
+    flex-direction: column;              /* 內容由上往下排列 */
+    align-items: center;                 /* 水平居中 */
+    justify-content: center;             /* 垂直居中 */
+    height: 100vh;                       /* 視窗 100% 高度 */
+    margin: 0;                           /* 清除邊距 */
+    font-family: "Microsoft JhengHei", sans-serif; /* 微軟正黑體 */
+    overflow: hidden;                    /* 隱藏捲軸 */
+    transition: background-color 0.5s;   /* 背景變色平滑感 */
+}
+
+/* 標題文字樣式 */
+#moodTitle { 
+    color: #8b7d6b;                      /* 文字顏色 */
+    margin-bottom: 40px;                 /* 下方間距 */
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 位移動畫 */
+}
+
+/* 心情顯示方塊樣式 */
+#colorBox {
+
+
+    width: 250px; height: 250px;         /* 方塊尺寸 */
+    background-color: #ffffff;           /* 初始白色背景 */
+    border-radius: 40px;                 /* 圓角 */
+    display: flex;                       /* 置中內部表情 */
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05); /* 淡淡陰影 */
+    margin-bottom: 30px;                 /* 下方間距 */
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 縮放旋轉動畫 */
+    animation: floating 3s ease-in-out infinite; /* 自動上下懸浮動畫 */
+    background: rgba(255, 255, 255, 0.4); /* 半透明白色 */
+    backdrop-filter: blur(10px);        /* 關鍵：背景模糊效果 */
+    -webkit-backdrop-filter: blur(10px); /* 支援 Safari 瀏覽器 */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* 超細白邊框，增加高級感 */
+}
+
+#moodEmoji { font-size: 80px; pointer-events: none; } /* 表情符號大小，禁用點擊攔截 */
+
+/* 通用按鈕基礎設定 */
+button {
+    padding: 12px 20px;                  /* 內距 */
+    margin: 5px;                         /* 間距 */
+    border: none;                        /* 清除邊框 */
+    border-radius: 12px;                 /* 圓角 */
+    color: #8b7d6b;                      /* 文字顏色 */
+    cursor: pointer;                     /* 滑鼠指尖圖示 */
+    font-weight: bold;                   /* 字體加粗 */
+    transition: all 0.2s ease;           /* 特效平滑感 */
+}
+
+/* 滑鼠移入按鈕效果 */
+button:hover {
+    transform: translateY(-3px);         /* 向上微移 */
+    filter: brightness(0.95);            /* 變深 */
+}
+
+/* 點擊按鈕縮小效果 */
+button:active {
+    transform: scale(0.9);               /* 縮小 */
+}
+
+/* 各心情按鈕初始色 */
+#happyBtn { background-color: #d3f9d8; }
+#heartBtn { background-color: #f8d7da; }
+#angryBtn { background-color: #e2a89c; }
+#shockBtn { background-color: #fcf4dd; }
+#sadBtn   { background-color: #e5e5e5; }
+#resetBtn { background-color: #d8c3a5; color: white; }
+
+/* 仙女閃粉樣式 */
+.fairy-dust {
+    position: fixed;
+    pointer-events: none;
+    background-color: #ffffff; 
+    border-radius: 50%;
+    z-index: 9999;
+    box-shadow: 0 0 6px #ffffff, 0 0 12px #fff4d6, 0 0 20px rgba(255, 223, 145, 0.6); 
+    transition: transform 1.2s ease-out, opacity 1.2s ease-out; 
+}
+
+/* 點擊爆炸粒子樣式 */
+.burst-particle {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+/* 螢幕震動類別 */
+.shake-effect {
+    animation: shake 0.2s ease-in-out !important;
+}
+
+/* 背景流動動畫腳本 */
+@keyframes fluidMove {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 自動懸浮動畫腳本 */
+@keyframes floating {
+    0%   { transform: translateY(0px) rotate(0deg); }
+    50%  { transform: translateY(-12px) rotate(1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* 震動動畫腳本 */
+@keyframes shake {
+    0% { transform: translate(1px, 1px); }
+    25% { transform: translate(-2px, -1px); }
+    50% { transform: translate(-1px, 2px); }
+    75% { transform: translate(2px, 1px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* 流體動畫類別 */
+.moving {
+    background-size: 400% 400% !important; 
+    animation: fluidMove 5s ease infinite !important;
+    border: 3px solid white !important;
+}
